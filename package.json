@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/SAziz24/Note-Tracker/issues"
   },
-  "homepage": "https://github.com/SAziz24/Note-Tracker#readme"
+  "homepage": "https://github.com/SAziz24/Note-Tracker#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
 }
