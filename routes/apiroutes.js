@@ -1,6 +1,6 @@
 // Dependencies
 const fs = require("fs");
-const db = require("../db/db.json");
+const db = require("../Develop/db/db.json");
 // Generate unique id(s) for the new note(s)
 const { v4: uuidv4 } = require('uuid');
 

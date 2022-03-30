@@ -6,11 +6,11 @@ module.exports = (app) => {
 
     // GET request & Route to notes
     app.get("/notes", (req, res) => {
-        res.sendFile(path.join(__dirname, "../public/notes.html"));
+        res.sendFile(path.join(__dirname, "../Develop/public/notes.html"));
     });
 
     // GET request & Route to homepage
     app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname, "../public/index.html"));
+        res.sendFile(path.join(__dirname, "../Develop/public/index.html"));
     });
 }

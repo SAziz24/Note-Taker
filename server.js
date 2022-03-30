@@ -6,7 +6,7 @@ const app = express();
 
 
 // PORT Defined
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8080;
 
 // parse incoming string or array data
 app.use(express.urlencoded({ extended: true }));
@@ -20,6 +20,4 @@ require("./routes/apiroutes")(app);
 require("./routes/htmlroutes")(app);
 
 // LISTENER - starting server
-app.listen(PORT, () => {
-    console.log(`App listening on PORT ${PORT}!`);
-});
+app.listen(PORT, () => console.log("App listening on PORT: ${PORT}"));
