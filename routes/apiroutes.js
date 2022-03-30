@@ -18,7 +18,7 @@ module.exports = app => {
         // Push the new note to the JSON file    
         db.push(newNote);
         // Write note to db.JSON
-        fs.writeFile("./db/db.json", JSON.stringify(db), (err) => {
+        fs.writeFile("./Develop/db/db.json", JSON.stringify(db), (err) => {
             if (err) throw err;
             
             // else send the response 
@@ -37,7 +37,7 @@ module.exports = app => {
             };
         }
         // Write the new db to the file 
-        fs.writeFile("./db/db.json", JSON.stringify(db), (err) => {
+        fs.writeFile("./Develop/db/db.json", JSON.stringify(db), (err) => {
             if (err) throw err;
             // else send the response
             res.json(db);
