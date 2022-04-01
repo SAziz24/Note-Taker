@@ -1,5 +1,9 @@
 // DEPENDENCIES
 const express = require("express");
+const path  =  require("path");
+const fs = require("fs");
+const util = require("util");
+
 
 // Express configuration
 const app = express();
@@ -20,4 +24,6 @@ require("./routes/apiroutes")(app);
 require("./routes/htmlroutes")(app);
 
 // LISTENER - starting server
-app.listen(PORT, () => console.log("App listening on PORT: ${PORT}"));
+app.listen(process.env.PORT || 8080, () => {
+    console.log("App listening on PORT: ${PORT}")
+});
