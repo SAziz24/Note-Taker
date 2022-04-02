@@ -1,47 +1,48 @@
-// Dependencies
-const fs = require("fs");
-const db = require("../Develop/db/db.json");
-// Generate unique id(s) for the new note(s)
+// LOAD DATA
+const notesData = require('../Develop/db/db.json');
+// npm package to generate unique id for each note
 const { v4: uuidv4 } = require('uuid');
 
-// Export API Routes
-module.exports = app => {
-    // API GET request to retrieve data from the database
-    app.get("/api/notes", (req, res) => {
-        res.json(db);
-    });
+// ROUTES
+module.exports = (app) => {
 
-     // API POST to create new note(s)
-    app.post("/api/notes", (req, res) => {
-        req.body.id = uuidv4();
-        var newNote = req.body    
-        // Push the new note to the JSON file    
-        db.push(newNote);
-        // Write note to db.JSON
-        fs.writeFile("./Develop/db/db.json", JSON.stringify(db), (err) => {
-            if (err) throw err;
-            
-            // else send the response 
-            res.json(db);
-            console.log("note written to db");
-        });   
-    });
+    // route for /api/notes that will show json data of notes array
+    app.get('/api/notes', (req, res) => res.json(notesData));
 
-    // API DELETE to delete notes
-    app.delete("/api/notes/:id", (req, res) => {
-        var noteID = req.params.id
-        for (var i = 0; i < db.length; i++) {
-            if (noteID === db[i].id) {
-                db.splice(i, 1);
-                console.log("note deleted from db");
-            };
+    // route for /api/notes/:id that will show json data for the specific note with the given id
+    app.get('/api/notes/:id', (req, res) => {
+        // set the id as a parameter
+        const chosenNote = req.params.id;
+
+        // return the json data for that specific id in the array of notes
+        for (let i = 0; i < notesData.length; i++) {
+            if (chosenNote === notesData[i].id) {
+                return res.json(notesData[i]);
+            }
         }
-        // Write the new db to the file 
-        fs.writeFile("./Develop/db/db.json", JSON.stringify(db), (err) => {
-            if (err) throw err;
-            // else send the response
-            res.json(db);
-        });
+    });
+
+    // route to receive a new note to save on the request body and add it to the notes array in db.json
+    app.post('/api/notes', (req, res) => {
         
+        const {title,text} = req.body;
+        // create a unique id for the note
+        const id = uuidv4();
+        // add the id as a key in the req.body object
+        notesData.push({id,title,text});
+        res.json(true);
+    } );
+
+    // rotue to delete a note from the array of notes
+    app.delete('/api/notes/:id', (req, res) => {
+        // set the id as a parameter
+        const chosenNote = req.params.id;
+
+        // remove the note with that specific id from the stored array of notes in db.json
+        for (let i = 0; i < notesData.length; i++) {
+            if (chosenNote === notesData[i].id) {
+                return res.json(notesData.splice(i, 1));
+            }
+        }
     });
 }

@@ -76,3 +76,11 @@ body {
   padding: 20px;
   cursor: pointer;
 }
+
+/* RESPONSIVENESS */
+@media screen and (max-width:500px) {
+  .note-title {
+    font-size: 2.5rem;
+    height: 100px;
+  }
+}
