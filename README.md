@@ -26,19 +26,14 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
-* [License](#license)
-* [Contributing](#contributing)
-* [Tests](#tests)
 * [Questions](#questions)
 
 ## Installation
+Visit my [Note Taker](https://pumpkin-pudding-37326.herokuapp.com/).
 
 ## Usage
-
-## License
-
-## Contributing
-
-## Tests
+This project can be used to generate a collection of notes which you remove when you no longer need them. 
 
 ## Questions
+
+For more content, check out my GitHub!
